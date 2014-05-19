@@ -1,0 +1,64 @@
+@(tasks: List[T_vessel_schedule_history], taskForm: Form[T_vessel_schedule_history])
+
+@import helper._
+
+@main("Berth Info List") {
+    
+    <h1>@tasks.size() task(s)</h1>
+    
+    <h2>Search each Terminal</h2>
+    
+    @form(routes.Application.berthinfoTerminal()) {
+        
+        @inputText(taskForm("Terminal")) 
+        
+        <input type="submit" value="Search">
+    }
+    
+    <table>
+    	<tr>
+    		<th>VVD Status</th>
+    		<th>Input Date</th>
+    		<th>Input Time</th>
+    		<th>Berth No</th>
+    		<th>Terminal</th>
+    		<th>OPR</th>
+    		<th>VVD</th>
+    		<th>In VVD OPR</th>
+    		<th>Out VVD OPR</th>
+    		<th>Vsl Name</th>
+    		<th>Route</th>
+    		<th>CCT</th>
+    		<th>ETB</th>
+    		<th>ETD</th>
+    		<th>ATB</th>
+    		<th>ATD</th>
+    		<th>Load Cnt</th>
+    		<th>Dis Cnt</th>
+    		<th>Shift Cnt</th>
+    	</tr>
+        @for(T_vessel_schedule_history <- tasks) {
+            <tr>
+            	<td>@T_vessel_schedule_history.vvd_status</td>
+            	<td>@T_vessel_schedule_history.ins_dt</td>
+                <td>@T_vessel_schedule_history.ins_tm</td>
+                <td>@T_vessel_schedule_history.berth_no</td>
+                <td>@T_vessel_schedule_history.terminal_id</td>
+                <td>@T_vessel_schedule_history.opr</td>
+                <td>@T_vessel_schedule_history.vvd</td>
+                <td>@T_vessel_schedule_history.in_vvd_opr</td>
+                <td>@T_vessel_schedule_history.out_vvd_opr</td>
+                <td>@T_vessel_schedule_history.vsl_name</td>
+                <td>@T_vessel_schedule_history.route</td>
+                <td>@T_vessel_schedule_history.cct</td>
+                <td>@T_vessel_schedule_history.etb</td>
+                <td>@T_vessel_schedule_history.etd</td>
+                <td>@T_vessel_schedule_history.atb</td>
+                <td>@T_vessel_schedule_history.atd</td>
+                <td>@T_vessel_schedule_history.load_cnt</td>
+                <td>@T_vessel_schedule_history.dis_cnt</td>
+                <td>@T_vessel_schedule_history.shift_cnt</td>
+            </tr>
+        }
+    </table>
+}
