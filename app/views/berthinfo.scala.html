@@ -4,39 +4,60 @@
 
 @main("Berth Info List") {
     
-    <h1>@tasks.size() task(s)</h1>
-    
     <h2>Search each Terminal</h2>
     
     @form(routes.Application.berthinfoTerminal()) {
         
-        @inputText(taskForm("Terminal")) 
+        @inputText(taskForm("Terminal"))        
         
+        <label>
+		    <select>
+		    <%
+		    	List<String> lstId = new List<String>();
+		    %>
+		    @for(terminal <- tasks) {
+		    	<%
+		    		String sId = %> @terminal.terminal_id <%;
+		    		System.out.println("++++++++++++++++++" + sId + "+++++++++++++++++++++++");
+		    		if(!lstId.contains(sId))
+		    		{
+		    			lstId.add(sId);
+		    	%>
+		        		<option>@terminal.terminal_id</option>
+		        <%
+		        	}
+		        %>
+		        }
+		    </select>
+		</label>
         <input type="submit" value="Search">
     }
     
-    <table>
-    	<tr>
-    		<th>VVD Status</th>
-    		<th>Input Date</th>
-    		<th>Input Time</th>
-    		<th>Berth No</th>
-    		<th>Terminal</th>
-    		<th>OPR</th>
-    		<th>VVD</th>
-    		<th>In VVD OPR</th>
-    		<th>Out VVD OPR</th>
-    		<th>Vsl Name</th>
-    		<th>Route</th>
-    		<th>CCT</th>
-    		<th>ETB</th>
-    		<th>ETD</th>
-    		<th>ATB</th>
-    		<th>ATD</th>
-    		<th>Load Cnt</th>
-    		<th>Dis Cnt</th>
-    		<th>Shift Cnt</th>
-    	</tr>
+    <table id="hor-minimalist-b">
+	    <thead>
+	    	<tr>
+	    		<th scope="col">VVD Status</th>
+	    		<th scope="col">Input Date</th>
+	    		<th scope="col">Input Time</th>
+	    		<th scope="col">Berth No</th>
+	    		<th scope="col">Terminal</th>
+	    		<th scope="col">OPR</th>
+	    		<th scope="col">VVD</th>
+	    		<th scope="col">In VVD OPR</th>
+	    		<th scope="col">Out VVD OPR</th>
+	    		<th scope="col">Vsl Name</th>
+	    		<th scope="col">Route</th>
+	    		<th scope="col">CCT</th>
+	    		<th scope="col">ETB</th>
+	    		<th scope="col">ETD</th>
+	    		<th scope="col">ATB</th>
+	    		<th scope="col">ATD</th>
+	    		<th scope="col">Load Cnt</th>
+	    		<th scope="col">Dis Cnt</th>
+	    		<th scope="col">Shift Cnt</th>
+	    	</tr>
+	   	</thead>
+	   	<tbody>
         @for(T_vessel_schedule_history <- tasks) {
             <tr>
             	<td>@T_vessel_schedule_history.vvd_status</td>
@@ -60,5 +81,6 @@
                 <td>@T_vessel_schedule_history.shift_cnt</td>
             </tr>
         }
+        </tbody>
     </table>
 }

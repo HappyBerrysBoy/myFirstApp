@@ -1,3 +1,81 @@
 @charset "utf-8";
 
-table {border:1px solid #0000ff;font-family:Tahoma;font-size:12px;}
+h1 {
+display: block;
+font-size: 2em;
+-webkit-margin-before: 0.67em;
+-webkit-margin-after: 0.67em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+font-weight: bold;
+color:#000099;
+}
+
+h1, h2, h3, h4, h5, h6, div {
+font-weight: 700;
+font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
+}
+
+div.header {padding-top:20px; font-weight:bold; color:#222288; width:100%; height:70px; font-size:48px; text-align:left; vertical-align: super; border:1px solid #000000;background: #f0f9ff; /* Old browsers */
+background: -moz-linear-gradient(top,  #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f9ff), color-stop(47%,#cbebff), color-stop(100%,#a1dbff)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+}
+
+#hor-minimalist-b {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 12px;
+background: #fff;
+border-collapse: collapse;
+text-align: center;
+margin: 20px;
+}
+
+#hor-minimalist-b th {
+/* font-size: 14px; */
+/* font-weight: normal; */
+/* color: #039; */
+border-bottom: 2px solid #6678b1;
+padding: 10px 8px;
+}
+
+#hor-minimalist-b td {
+border-bottom: 1px solid #ccc;
+color: #669;
+padding: 6px 8px;
+}
+
+table td {
+padding: .5em;
+}
+
+td, td img {
+vertical-align: top;
+}
+
+table {
+	width: 90%;
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
+font-size: 100%;
+vertical-align: baseline;
+margin: 0;
+padding: 0;
+outline: 0;
+border: none;
+background: 0 0;
+}
+
+user agent stylesheettable {
+display: table;
+border-collapse: separate;
+border-spacing: 2px;
+border-color: gray;
+}

@@ -46,4 +46,25 @@ public static Finder<Long, T_vessel_schedule_history> find = new Finder(Long.cla
 		return berthInfo;
 				
 	}
+	
+	public static String getDatePattern(String date){
+	    
+		String sReturn = "";
+		
+    	if(date.length() < 14) return date;
+    
+    	sReturn = date.substring(0, 4);
+    	sReturn += "-";
+    	sReturn += date.substring(4, 6);
+    	sReturn += "-";
+    	sReturn += date.substring(6, 8);
+    	sReturn += " ";
+    	sReturn += date.substring(8, 10);
+    	sReturn += ":";
+    	sReturn += date.substring(10, 12);
+    	sReturn += ":";
+    	sReturn += date.substring(12, 14);
+    	
+    	return sReturn;
+	}
 }
