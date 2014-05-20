@@ -63,6 +63,8 @@ border-collapse: collapse;
 border-spacing: 0;
 }
 
+table.inputArea{width:30%;border:1px solid #cccccc;margin-left: 20px}
+
 abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, main, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
 font-size: 100%;
 vertical-align: baseline;

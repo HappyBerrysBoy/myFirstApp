@@ -9,12 +9,15 @@ GET     /                           controllers.Application.index()
 
 #Tasks
 GET     /tasks                    controllers.Application.tasks()
+GET     /tasksJson                controllers.Application.getTasks()
 POST   /tasks                     controllers.Application.newTask()
 POST   /tasks/:id/delete          controllers.Application.deleteTask(id: Long)
 
 #Terminal Berth Info
 GET     /berth                    controllers.Application.berthinfo()
-POST    /berth/                   controllers.Application.berthinfoTerminal()
+POST    /berth                    controllers.Application.berthinfoTerminal()
+GET     /berthJson                controllers.Application.berthinfoJson()
+POST    /berthJson                controllers.Application.berthinfoTerminalJson()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -4,30 +4,73 @@
 
 @main("Berth Info List") {
     
-    <h1>@tasks.size() task(s)</h1>
+    <h2>Search each Terminal</h2>
     
-    <table border="1px solid">
-    	<tr>
-    		<th>VVD Status</th>
-    		<th>Input Date</th>
-    		<th>Input Time</th>
-    		<th>Berth No</th>
-    		<th>Terminal</th>
-    		<th>OPR</th>
-    		<th>VVD</th>
-    		<th>In VVD OPR</th>
-    		<th>Out VVD OPR</th>
-    		<th>Vsl Name</th>
-    		<th>Route</th>
-    		<th>CCT</th>
-    		<th>ETB</th>
-    		<th>ETD</th>
-    		<th>ATB</th>
-    		<th>ATD</th>
-    		<th>Load Cnt</th>
-    		<th>Dis Cnt</th>
-    		<th>Shift Cnt</th>
-    	</tr>
+    <br>
+    <h4>Search to List</h4>
+    @form(routes.Application.berthinfoTerminal()) {
+    	<table class="inputArea">
+    		<tr>
+    			<td>@inputText(taskForm("InputDate"))</td>
+    			<td>@inputText(taskForm("Terminal"))</td>
+    			<td>@inputText(taskForm("OPR"))</td>
+    			<td>@inputText(taskForm("VVD"))</td>
+    			<td>@inputText(taskForm("In VVD OPR"))</td>
+    			<td>@inputText(taskForm("Out VVD OPR"))</td>
+    			<td>@inputText(taskForm("Vsl Name"))</td>
+    			<td>@inputText(taskForm("Route"))</td>
+    			<td>@inputText(taskForm("Status"))</td>
+    			<td><input type="submit" value="SearchToList" style="width:=250px;height:100%"></td>
+    		</tr>
+        </table>
+    }
+    
+    <br>
+    <h4>Search to Json</h4>
+    @form(routes.Application.berthinfoTerminalJson()) {
+    	<table class="inputArea">
+    		<tr>
+    			<td>@inputText(taskForm("InputDate"))</td>
+    			<td>@inputText(taskForm("Terminal"))</td>
+    			<td>@inputText(taskForm("OPR"))</td>
+    			<td>@inputText(taskForm("VVD"))</td>
+    			<td>@inputText(taskForm("In VVD OPR"))</td>
+    			<td>@inputText(taskForm("Out VVD OPR"))</td>
+    			<td>@inputText(taskForm("Vsl Name"))</td>
+    			<td>@inputText(taskForm("Route"))</td>
+    			<td>@inputText(taskForm("Status"))</td>
+    			<td><input type="submit" value="SearchToJson" style="width:=250px;height:100%"></td>
+    		</tr>
+        </table>
+    }
+    
+    <br>
+    <h1>@tasks.size() task(s)</h1>
+    <table id="hor-minimalist-b">
+	    <thead>
+	    	<tr>
+	    		<th scope="col">VVD Status</th>
+	    		<th scope="col">Input Date</th>
+	    		<th scope="col">Input Time</th>
+	    		<th scope="col">Berth No</th>
+	    		<th scope="col">Terminal</th>
+	    		<th scope="col">OPR</th>
+	    		<th scope="col">VVD</th>
+	    		<th scope="col">In VVD OPR</th>
+	    		<th scope="col">Out VVD OPR</th>
+	    		<th scope="col">Vsl Name</th>
+	    		<th scope="col">Route</th>
+	    		<th scope="col">CCT</th>
+	    		<th scope="col">ETB</th>
+	    		<th scope="col">ETD</th>
+	    		<th scope="col">ATB</th>
+	    		<th scope="col">ATD</th>
+	    		<th scope="col">Load Cnt</th>
+	    		<th scope="col">Dis Cnt</th>
+	    		<th scope="col">Shift Cnt</th>
+	    	</tr>
+	   	</thead>
+	   	<tbody>
         @for(T_vessel_schedule_history <- tasks) {
             <tr>
             	<td>@T_vessel_schedule_history.vvd_status</td>
@@ -51,5 +94,6 @@
                 <td>@T_vessel_schedule_history.shift_cnt</td>
             </tr>
         }
+        </tbody>
     </table>
 }

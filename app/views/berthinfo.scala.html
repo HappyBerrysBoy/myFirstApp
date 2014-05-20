@@ -6,33 +6,46 @@
     
     <h2>Search each Terminal</h2>
     
+    <br>
+    <h4>Search to List</h4>
     @form(routes.Application.berthinfoTerminal()) {
-        
-        @inputText(taskForm("Terminal"))        
-        
-        <label>
-		    <select>
-		    <%
-		    	List<String> lstId = new List<String>();
-		    %>
-		    @for(terminal <- tasks) {
-		    	<%
-		    		String sId = %> @terminal.terminal_id <%;
-		    		System.out.println("++++++++++++++++++" + sId + "+++++++++++++++++++++++");
-		    		if(!lstId.contains(sId))
-		    		{
-		    			lstId.add(sId);
-		    	%>
-		        		<option>@terminal.terminal_id</option>
-		        <%
-		        	}
-		        %>
-		        }
-		    </select>
-		</label>
-        <input type="submit" value="Search">
+    	<table class="inputArea">
+    		<tr>
+    			<td>@inputText(taskForm("InputDate"))</td>
+    			<td>@inputText(taskForm("Terminal"))</td>
+    			<td>@inputText(taskForm("OPR"))</td>
+    			<td>@inputText(taskForm("VVD"))</td>
+    			<td>@inputText(taskForm("In VVD OPR"))</td>
+    			<td>@inputText(taskForm("Out VVD OPR"))</td>
+    			<td>@inputText(taskForm("Vsl Name"))</td>
+    			<td>@inputText(taskForm("Route"))</td>
+    			<td>@inputText(taskForm("Status"))</td>
+    			<td><input type="submit" value="SearchToList" style="width:=250px;height:100%"></td>
+    		</tr>
+        </table>
     }
     
+    <br>
+    <h4>Search to Json</h4>
+    @form(routes.Application.berthinfoTerminalJson()) {
+    	<table class="inputArea">
+    		<tr>
+    			<td>@inputText(taskForm("InputDate"))</td>
+    			<td>@inputText(taskForm("Terminal"))</td>
+    			<td>@inputText(taskForm("OPR"))</td>
+    			<td>@inputText(taskForm("VVD"))</td>
+    			<td>@inputText(taskForm("In VVD OPR"))</td>
+    			<td>@inputText(taskForm("Out VVD OPR"))</td>
+    			<td>@inputText(taskForm("Vsl Name"))</td>
+    			<td>@inputText(taskForm("Route"))</td>
+    			<td>@inputText(taskForm("Status"))</td>
+    			<td><input type="submit" value="SearchToJson" style="width:=250px;height:100%"></td>
+    		</tr>
+        </table>
+    }
+    
+    <br>
+    <h1>@tasks.size() task(s)</h1>
     <table id="hor-minimalist-b">
 	    <thead>
 	    	<tr>

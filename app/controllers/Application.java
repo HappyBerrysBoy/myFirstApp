@@ -1,18 +1,33 @@
 package controllers;
 
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import org.joda.time.DateTime;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import models.PLAY_TEST_BAR;
 import models.T_vessel_schedule_history;
 import models.Task;
+import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
 import play.data.*;
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 
 public class Application extends Controller {
 
 	static Form<Task> taskForm = Form.form(Task.class);
 	static Form<T_vessel_schedule_history> berthForm = Form.form(T_vessel_schedule_history.class);
+	
+	public static Result getTasks(){
+		List<Task> tasks = new Model.Finder(Long.class, Task.class).all();
+		return ok(Json.toJson(tasks));
+	}
 	
 	public static Result index() {
 //		Result ok = ok("Hello world!");
@@ -47,11 +62,24 @@ public class Application extends Controller {
     
     
     public static Result berthinfo(){
+    	System.out.println("Request Time(berthinfo) : " + GregorianCalendar.getInstance());
     	return ok(views.html.berthinfo.render(T_vessel_schedule_history.all(), berthForm));
     }
     
     public static Result berthinfoTerminal(){
+    	System.out.println("Request Time(berthinfoTerminal) : " + GregorianCalendar.getInstance());
     	Form<T_vessel_schedule_history> filledForm = berthForm.bindFromRequest();
 		return ok(views.html.berthinfo.render(T_vessel_schedule_history.terminal(filledForm.apply("Terminal").value()), berthForm));
+    }
+    
+    public static Result berthinfoJson(){
+    	System.out.println("Request Time(berthinfoJson) : " + GregorianCalendar.getInstance());
+//    	List<T_vessel_schedule_history> berthInfo = new Model.Finder(String.class, T_vessel_schedule_history.class).all();
+    	return ok(Json.toJson(T_vessel_schedule_history.all()));
+    }
+    
+    public static Result berthinfoTerminalJson(){
+    	System.out.println("Request Time(berthinfoTerminalJson) : " + GregorianCalendar.getInstance());
+    	return ok(Json.toJson(T_vessel_schedule_history.terminal(berthForm.bindFromRequest())));
     }
 }
