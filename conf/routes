@@ -19,5 +19,8 @@ POST    /berth                    controllers.Application.berthinfoTerminal()
 GET     /berthJson                controllers.Application.berthinfoJson()
 POST    /berthJson                controllers.Application.berthinfoTerminalJson()
 
+#Scala Test
+GET     /scala                    controllers.ScalaApp.index()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
