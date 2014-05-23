@@ -40,7 +40,12 @@ public class T_vessel_schedule_history extends Model{
 public static Finder<Long, T_vessel_schedule_history> find = new Finder(Long.class, T_vessel_schedule_history.class);
 	
 	public static List<T_vessel_schedule_history> all(){
-		return find.where().orderBy("ins_dt desc, ins_tm desc, terminal_id").findList();
+		DateTime dt = new DateTime();
+		String today = "" + dt.now().getYear() + String.format("%02d", dt.now().getMonthOfYear()) +  String.format("%02d", dt.now().getDayOfMonth());
+		String fromTime = "" + String.format("%02d", dt.now().getHourOfDay() - 1) + String.format("%02d", dt.now().getMinuteOfHour()) + String.format("%02d", dt.now().getSecondOfMinute());
+		String toTime = "" + String.format("%02d", dt.now().getHourOfDay()) + String.format("%02d", dt.now().getMinuteOfHour()) + String.format("%02d", dt.now().getSecondOfMinute());
+		System.out.println("Today : " + today);
+		return find.where().like("ins_dt", today).between("ins_tm", fromTime, toTime).orderBy("ins_dt desc, ins_tm desc, terminal_id").findList();
 	}
 	
 	public static List<T_vessel_schedule_history> terminal(String terminalName){
