@@ -1,4 +1,4 @@
-@(tasks: List[T_vessel_schedule_history], taskForm: Form[T_vessel_schedule_history])
+@(tasks: List[T_vessel_schedule], taskForm: Form[T_vessel_schedule])
 
 @import helper._
 
@@ -11,15 +11,19 @@
     @form(routes.Application.berthinfoTerminal()) {
     	<table class="inputArea">
     		<tr>
-    			<td>@inputText(taskForm("InputDate"))</td>
-    			<td>@inputText(taskForm("Terminal"))</td>
-    			<td>@inputText(taskForm("OPR"))</td>
-    			<td>@inputText(taskForm("VVD"))</td>
-    			<td>@inputText(taskForm("In VVD OPR"))</td>
-    			<td>@inputText(taskForm("Out VVD OPR"))</td>
-    			<td>@inputText(taskForm("Vsl Name"))</td>
-    			<td>@inputText(taskForm("Route"))</td>
-    			<td>@inputText(taskForm("Status"))</td>
+    			<td>@helper.inputText(taskForm("terminal_id"), 'id -> "terminal_id", 'size -> 7)</td>
+    			<td>@helper.inputText(taskForm("opr"), 'id -> "opr", 'size -> 5)</td>
+    			<td>@helper.inputText(taskForm("vvd"), 'id -> "vvd", 'size -> 7)</td>
+    			<td>@helper.inputText(taskForm("in_vvd_opr"), 'id -> "in_vvd_opr", 'size -> 10)</td>
+    			<td>@helper.inputText(taskForm("out_vvd_opr"), 'id -> "out_vvd_opr", 'size -> 10)</td>
+    			<td>@helper.inputText(taskForm("vsl_name"), 'id -> "vsl_name", 'size -> 20)</td>
+    			<td>@helper.inputText(taskForm("route"), 'id -> "route", 'size -> 5)</td>
+    			<td>@helper.inputText(taskForm("vvd_status"), 'id -> "vvd_status", 'size -> 7)</td>
+    			<td>@helper.inputText(taskForm("cct"), 'id -> "cct", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("etb"), 'id -> "etb", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("etd"), 'id -> "etd", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("atb"), 'id -> "atb", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("atd"), 'id -> "atd", 'size -> 15)</td>
     			<td><input type="submit" value="SearchToList" style="width:=250px;height:100%"></td>
     		</tr>
         </table>
@@ -30,15 +34,19 @@
     @form(routes.Application.berthinfoTerminalJson()) {
     	<table class="inputArea">
     		<tr>
-    			<td>@inputText(taskForm("InputDate"))</td>
-    			<td>@inputText(taskForm("Terminal"))</td>
-    			<td>@inputText(taskForm("OPR"))</td>
-    			<td>@inputText(taskForm("VVD"))</td>
-    			<td>@inputText(taskForm("In VVD OPR"))</td>
-    			<td>@inputText(taskForm("Out VVD OPR"))</td>
-    			<td>@inputText(taskForm("Vsl Name"))</td>
-    			<td>@inputText(taskForm("Route"))</td>
-    			<td>@inputText(taskForm("Status"))</td>
+    			<td>@helper.inputText(taskForm("terminal_id"), 'id -> "terminal_id", 'size -> 7)</td>
+    			<td>@helper.inputText(taskForm("opr"), 'id -> "opr", 'size -> 5)</td>
+    			<td>@helper.inputText(taskForm("vvd"), 'id -> "vvd", 'size -> 7)</td>
+    			<td>@helper.inputText(taskForm("in_vvd_opr"), 'id -> "in_vvd_opr", 'size -> 10)</td>
+    			<td>@helper.inputText(taskForm("out_vvd_opr"), 'id -> "out_vvd_opr", 'size -> 10)</td>
+    			<td>@helper.inputText(taskForm("vsl_name"), 'id -> "vsl_name", 'size -> 20)</td>
+    			<td>@helper.inputText(taskForm("route"), 'id -> "route", 'size -> 5)</td>
+    			<td>@helper.inputText(taskForm("vvd_status"), 'id -> "vvd_status", 'size -> 7)</td>
+    			<td>@helper.inputText(taskForm("cct"), 'id -> "cct", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("etb"), 'id -> "etb", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("etd"), 'id -> "etd", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("atb"), 'id -> "atb", 'size -> 15)</td>
+    			<td>@helper.inputText(taskForm("atd"), 'id -> "atd", 'size -> 15)</td>
     			<td><input type="submit" value="SearchToJson" style="width:=250px;height:100%"></td>
     		</tr>
         </table>
@@ -50,8 +58,6 @@
 	    <thead>
 	    	<tr>
 	    		<th scope="col">VVD Status</th>
-	    		<th scope="col">Input Date</th>
-	    		<th scope="col">Input Time</th>
 	    		<th scope="col">Berth No</th>
 	    		<th scope="col">Terminal</th>
 	    		<th scope="col">OPR</th>
@@ -71,27 +77,25 @@
 	    	</tr>
 	   	</thead>
 	   	<tbody>
-        @for(T_vessel_schedule_history <- tasks) {
+        @for(T_vessel_schedule <- tasks) {
             <tr>
-            	<td>@T_vessel_schedule_history.vvd_status</td>
-            	<td>@T_vessel_schedule_history.ins_dt</td>
-                <td>@T_vessel_schedule_history.ins_tm</td>
-                <td>@T_vessel_schedule_history.berth_no</td>
-                <td>@T_vessel_schedule_history.terminal_id</td>
-                <td>@T_vessel_schedule_history.opr</td>
-                <td>@T_vessel_schedule_history.vvd</td>
-                <td>@T_vessel_schedule_history.in_vvd_opr</td>
-                <td>@T_vessel_schedule_history.out_vvd_opr</td>
-                <td>@T_vessel_schedule_history.vsl_name</td>
-                <td>@T_vessel_schedule_history.route</td>
-                <td>@T_vessel_schedule_history.cct</td>
-                <td>@T_vessel_schedule_history.etb</td>
-                <td>@T_vessel_schedule_history.etd</td>
-                <td>@T_vessel_schedule_history.atb</td>
-                <td>@T_vessel_schedule_history.atd</td>
-                <td>@T_vessel_schedule_history.load_cnt</td>
-                <td>@T_vessel_schedule_history.dis_cnt</td>
-                <td>@T_vessel_schedule_history.shift_cnt</td>
+            	<td>@T_vessel_schedule.vvd_status</td>
+                <td>@T_vessel_schedule.berth_no</td>
+                <td>@T_vessel_schedule.terminal_id</td>
+                <td>@T_vessel_schedule.opr</td>
+                <td>@T_vessel_schedule.vvd</td>
+                <td>@T_vessel_schedule.in_vvd_opr</td>
+                <td>@T_vessel_schedule.out_vvd_opr</td>
+                <td>@T_vessel_schedule.vsl_name</td>
+                <td>@T_vessel_schedule.route</td>
+                <td>@T_vessel_schedule.cct</td>
+                <td>@T_vessel_schedule.etb</td>
+                <td>@T_vessel_schedule.etd</td>
+                <td>@T_vessel_schedule.atb</td>
+                <td>@T_vessel_schedule.atd</td>
+                <td>@T_vessel_schedule.load_cnt</td>
+                <td>@T_vessel_schedule.dis_cnt</td>
+                <td>@T_vessel_schedule.shift_cnt</td>
             </tr>
         }
         </tbody>

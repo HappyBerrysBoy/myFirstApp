@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import models.PLAY_TEST_BAR;
+import models.T_vessel_schedule;
 import models.T_vessel_schedule_history;
 import models.Task;
 import play.libs.Json;
@@ -22,7 +23,7 @@ import play.db.ebean.Model.Finder;
 public class Application extends Controller {
 
 	static Form<Task> taskForm = Form.form(Task.class);
-	static Form<T_vessel_schedule_history> berthForm = Form.form(T_vessel_schedule_history.class);
+	static Form<T_vessel_schedule> berthForm = Form.form(T_vessel_schedule.class);
 	
 	public static Result getTasks(){
 		List<Task> tasks = new Model.Finder(Long.class, Task.class).all();
@@ -63,23 +64,29 @@ public class Application extends Controller {
     
     public static Result berthinfo(){
     	System.out.println("Request Time(berthinfo) : " + GregorianCalendar.getInstance());
-    	return ok(views.html.berthinfo.render(T_vessel_schedule_history.all(), berthForm));
+    	return ok(views.html.berthinfo.render(T_vessel_schedule.all(), berthForm));
     }
     
     public static Result berthinfoTerminal(){
     	System.out.println("Request Time(berthinfoTerminal) : " + GregorianCalendar.getInstance());
-    	Form<T_vessel_schedule_history> filledForm = berthForm.bindFromRequest();
-		return ok(views.html.berthinfo.render(T_vessel_schedule_history.terminal(filledForm.apply("Terminal").value()), berthForm));
+    	Form<T_vessel_schedule> filledForm = berthForm.bindFromRequest();
+		return ok(views.html.berthinfo.render(T_vessel_schedule.terminal(berthForm.bindFromRequest()), berthForm));
     }
     
-    public static Result berthinfoJson(){
+    public static Result berthinfoAllJson(){
     	System.out.println("Request Time(berthinfoJson) : " + GregorianCalendar.getInstance());
 //    	List<T_vessel_schedule_history> berthInfo = new Model.Finder(String.class, T_vessel_schedule_history.class).all();
-    	return ok(Json.toJson(T_vessel_schedule_history.all()));
+    	return ok(Json.toJson(T_vessel_schedule.all()));
+    }
+    
+    public static Result berthinfoJson(String tml, String vcod, String vvd, String year, String opr, String in_vvd_opr, String out_vvd_opr, String berth_no, String cct, String etb, String etd, String atb, String atd, String vvd_status, String vsl_name, String route){
+    	System.out.println("Request Time(berthinfoJson) : " + GregorianCalendar.getInstance());
+//    	List<T_vessel_schedule_history> berthInfo = new Model.Finder(String.class, T_vessel_schedule_history.class).all();
+    	return ok(Json.toJson(T_vessel_schedule.terminal(tml, vcod, vvd, year, opr, in_vvd_opr, out_vvd_opr, berth_no, cct, etb, etd, atb, atd, vvd_status, vsl_name, route)));
     }
     
     public static Result berthinfoTerminalJson(){
     	System.out.println("Request Time(berthinfoTerminalJson) : " + GregorianCalendar.getInstance());
-    	return ok(Json.toJson(T_vessel_schedule_history.terminal(berthForm.bindFromRequest())));
+    	return ok(Json.toJson(T_vessel_schedule.terminal(berthForm.bindFromRequest())));
     }
 }
