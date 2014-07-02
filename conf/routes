@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /                         controllers.Application.index()
 #POST	/bars	                  controllers.Application.addBar()
 #GET    /bars                     controllers.Application.getBars()
 
@@ -16,8 +16,9 @@ POST   /tasks/:id/delete          controllers.Application.deleteTask(id: Long)
 #Terminal Berth Info
 GET     /berth                    controllers.Application.berthinfo()
 POST    /berth                    controllers.Application.berthinfoTerminal()
-GET     /berthJson/:tml/:vcod/:vvd/:year/:opr/:in_vvd_opr/:out_vvd_opr/:berth_no/:cct/:etb/:etd/:atb/:atd/:vvd_status/:vsl_name/:route  controllers.Application.berthinfoJson(tml:String, vcod:String, vvd:String, year:String, opr:String, in_vvd_opr:String, out_vvd_opr:String, berth_no:String, cct:String, etb:String, etd:String, atb:String, atd:String, vvd_status:String, vsl_name:String, route:String)
+
 GET     /berthAllJson             controllers.Application.berthinfoAllJson()
+GET     /berthJson             	  controllers.Application.getBerthinfo()
 POST    /berthJson                controllers.Application.berthinfoTerminalJson()
 
 #Scala Test

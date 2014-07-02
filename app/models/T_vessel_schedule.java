@@ -49,24 +49,22 @@ public class T_vessel_schedule extends Model{
 	public static List<T_vessel_schedule> terminal(String tml, String vcod, String vvd, String year, String opr, 
 			String in_vvd_opr, String out_vvd_opr, String berth_no, String cct, String etb, String etd, 
 			String atb, String atd, String vvd_status, String vsl_name, String route){
-//		sample... 헐;; http://hnctech73.iptime.org:9000/berthJson/HPNT/HHHG/2/2014/HMM/528W/528W/T1/201406041600/201406050400/201406052000/201406050400/201406052000/DEPARTED/HYUNDAI%20HIGHNESS/CIX
-//		http://hnctech73.iptime.org:9000/berthJson/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-
-		if(tml.equals("-")) tml = "%%%";
-		if(vcod.equals("-")) vcod = "%%%";
-		if(vvd.equals("-")) vvd = "%%%";
-		if(year.equals("-")) year = "%%%";
-		if(opr.equals("-")) opr = "%%%";
-		if(in_vvd_opr.equals("-")) in_vvd_opr = "%%%";
-		if(out_vvd_opr.equals("-")) out_vvd_opr = "%%%";
-		if(berth_no.equals("-")) berth_no = "%%%";
-		if(cct.equals("-")) cct = "%%%";
-		if(etb.equals("-")) etb = "%%%";
-		if(etd.equals("-")) etd = "%%%";
-		if(atb.equals("-")) atb = "%%%";
-		if(atd.equals("-")) atd = "%%%";
-		if(vvd_status.equals("-")) vvd_status = "%%%";
-		if(vsl_name.equals("-")) vsl_name = "%%%";
-		if(route.equals("-")) route = "%%%";
+		if(tml == null) tml = "%%%";
+		if(vcod == null) vcod = "%%%";
+		if(vvd == null) vvd = "%%%";
+		if(year == null) year = "%%%";
+		if(opr == null) opr = "%%%";
+		if(in_vvd_opr == null) in_vvd_opr = "%%%";
+		if(out_vvd_opr == null) out_vvd_opr = "%%%";
+		if(berth_no == null) berth_no = "%%%";
+		if(cct == null) cct = "%%%";
+		if(etb == null) etb = "%%%";
+		if(etd == null) etd = "%%%";
+		if(atb == null) atb = "%%%";
+		if(atd == null) atd = "%%%";
+		if(vvd_status == null) vvd_status = "%%%";
+		if(vsl_name == null) vsl_name = "%%%";
+		if(route == null) route = "%%%";
 		
 		List<T_vessel_schedule> berthInfo = find.where().like("terminal_id", tml).like("vsl_cod", vcod).like("vvd", vvd)
 				.like("vvd_year", year).like("opr", opr).like("in_vvd_opr", in_vvd_opr)
