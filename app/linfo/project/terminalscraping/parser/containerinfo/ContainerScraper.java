@@ -25,12 +25,19 @@ public class ContainerScraper {
 	public void doScraper(){
 		try{
 			System.out.println("START!@#$%^&%%$#@$%^&%$#@$%^");
+			
+			System.out.println(tml);
+			System.out.println(cntr_no);
+			System.out.println(vsl_cod);
+			System.out.println(vvd);
+			System.out.println(year);
 			Scraper s = new Scraper();
 			
 //			s.addParam(1, "NCCU1283719"); //bit
-			s.addParam(1, "EISU5805440"); //dpct
+//			s.addParam(1, "EISU5805440"); //dpct
 //			s.addParam(1, "CXDU1713476"); //hktl
 //			s.addParam(1, "AMFU3271777"); //HPNT
+			s.addParam(1, cntr_no);
 			
 			for(String item : s.getItems()){
 				if(item.equals("ContainerInformation")){
@@ -38,8 +45,8 @@ public class ContainerScraper {
 						if (t.getTerminalId().equals("DPCT")){
 							System.out.println("==================" + t.getTerminalId() + "==================");
 							System.out.println(s.getHtml(t));
-//							DPCTContainerInfoParser dpct = new DPCTContainerInfoParser();
-//							dpct.SetContainerInfo(s.getHtml(t));
+							DPCTContainerInfoParser dpct = new DPCTContainerInfoParser();
+							dpct.SetContainerInfo(s.getHtml(t));
 						}
 					}
 				}
