@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import linfo.project.terminalscraping.parser.containerinfo.ContainerScraper;
 import models.PLAY_TEST_BAR;
 import models.T_vessel_schedule;
 import models.T_vessel_schedule_history;
@@ -136,5 +137,18 @@ public class Application extends Controller {
     	System.out.println("tml:" + tml + ",vcod:" + vcod + ",vvd:" + vvd + ",year:" + year + ",opr:" + opr + ",in_vvd_opr:" + ",out_vvd_opr:" + berth_no + ",cct:" + cct + ",etb:" + etb + ",etd:" + etd + ",atb:" + atb + ",atd:" + atd + ",vvd_status:" + vvd_status + ",vsl_name:" + vsl_name + ",route:" + route);
     	
     	return ok(Json.toJson(T_vessel_schedule.terminal(tml, vcod, vvd, year, opr, in_vvd_opr, out_vvd_opr, berth_no, cct, etb, etd, atb, atd, vvd_status, vsl_name, route)));
+    }
+    
+    public static Result getContainerInfo(){
+    	String cntr_no = request().getQueryString("cntr_no");
+    	String tml = request().getQueryString("tml");
+    	String vsl_cod = request().getQueryString("vsl_cod");
+    	String vvd = request().getQueryString("vvd");
+    	String year = request().getQueryString("year");
+    	
+    	ContainerScraper cs = new ContainerScraper(tml, cntr_no, vsl_cod, vvd, year);
+    	cs.doScraper();
+    	
+    	return ok(index.render(cntr_no + tml));
     }
 }

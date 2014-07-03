@@ -21,6 +21,8 @@ GET     /berthAllJson             controllers.Application.berthinfoAllJson()
 GET     /berthJson             	  controllers.Application.getBerthinfo()
 POST    /berthJson                controllers.Application.berthinfoTerminalJson()
 
+GET     /container             	  controllers.Application.getContainerInfo()
+
 #Scala Test
 GET     /scala                    controllers.ScalaApp.index()
 
