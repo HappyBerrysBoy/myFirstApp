@@ -11,7 +11,11 @@ public class ContainerInfoParser {
 	* html 코드에서 데이터를 추출하여 화면에 출력 한다.
 	* @param html html 코드
 	*/
-	public void SetContainerInfo(String html){}
+	public ContainerInformation SetContainerInfo(String html){
+		
+		ContainerInformation con = new ContainerInformation();
+		return con;
+	}
 	
 	
 	/**

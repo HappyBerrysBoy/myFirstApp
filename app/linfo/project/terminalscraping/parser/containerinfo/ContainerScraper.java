@@ -1,5 +1,6 @@
 package linfo.project.terminalscraping.parser.containerinfo;
 
+import linfo.project.terminalscraping.objects.ContainerInformation;
 import linfo.project.terminalscraping.scrapper.Scraper;
 import linfo.project.terminalscraping.scrapper.WebSite;
 
@@ -46,7 +47,8 @@ public class ContainerScraper {
 							System.out.println("==================" + t.getTerminalId() + "==================");
 							System.out.println(s.getHtml(t));
 							DPCTContainerInfoParser dpct = new DPCTContainerInfoParser();
-							dpct.SetContainerInfo(s.getHtml(t));
+							ContainerInformation dpctCntr = new ContainerInformation();
+							dpctCntr = dpct.SetContainerInfo(s.getHtml(t));
 						}
 					}
 				}

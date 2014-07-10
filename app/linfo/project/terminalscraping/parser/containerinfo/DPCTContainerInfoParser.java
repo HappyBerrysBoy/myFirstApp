@@ -106,7 +106,7 @@ public class DPCTContainerInfoParser extends ContainerInfoParser{
 	}
 	
 	@Override
-	public ContainerInformation extractContainerInformation(String pHtml){
+	public ContainerInformation SetContainerInfo(String pHtml){
         BufferedReader buffer;
         ContainerInformation ci = new ContainerInformation(); 
         

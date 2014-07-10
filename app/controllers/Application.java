@@ -97,6 +97,11 @@ public class Application extends Controller {
     	String vsl_name = request().getQueryString("vsl_name");
     	String route = request().getQueryString("route");
     	
+    	response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
+//        response().setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
+//        response().setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
+//        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");         // Ensure this header is also allowed!
+    	
     	System.out.println("tml:" + tml + ",vcod:" + vcod + ",vvd:" + vvd + ",year:" + year + ",opr:" + opr + ",in_vvd_opr:" + ",out_vvd_opr:" + berth_no + ",cct:" + cct + ",etb:" + etb + ",etd:" + etd + ",atb:" + atb + ",atd:" + atd + ",vvd_status:" + vvd_status + ",vsl_name:" + vsl_name + ",route:" + route);
     	
     	return ok(Json.toJson(T_vessel_schedule.terminal(tml, vcod, vvd, year, opr, in_vvd_opr, out_vvd_opr, berth_no, cct, etb, etd, atb, atd, vvd_status, vsl_name, route)));
@@ -134,9 +139,19 @@ public class Application extends Controller {
     	String vsl_name = request().getQueryString("vsl_name");
     	String route = request().getQueryString("route");
     	
+    	response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
+//        response().setHeader("Access-Control-Allow-Methods", "POST");   // Only allow POST
+//        response().setHeader("Access-Control-Max-Age", "300");          // Cache response for 5 minutes
+//        response().setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");         // Ensure this header is also allowed!
+        
     	System.out.println("tml:" + tml + ",vcod:" + vcod + ",vvd:" + vvd + ",year:" + year + ",opr:" + opr + ",in_vvd_opr:" + ",out_vvd_opr:" + berth_no + ",cct:" + cct + ",etb:" + etb + ",etd:" + etd + ",atb:" + atb + ",atd:" + atd + ",vvd_status:" + vvd_status + ",vsl_name:" + vsl_name + ",route:" + route);
     	
     	return ok(Json.toJson(T_vessel_schedule.terminal(tml, vcod, vvd, year, opr, in_vvd_opr, out_vvd_opr, berth_no, cct, etb, etd, atb, atd, vvd_status, vsl_name, route)));
+    }
+    
+    public static Result checkPreFlight(){
+    	response().setHeader("Access-Control-Allow-Origin", "*");       // Need to add the correct domain in here!!
+    	return ok();
     }
     
     public static Result getContainerInfo(){

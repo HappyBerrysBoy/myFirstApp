@@ -20,6 +20,7 @@ POST    /berth                    controllers.Application.berthinfoTerminal()
 GET     /berthAllJson             controllers.Application.berthinfoAllJson()
 GET     /berthJson             	  controllers.Application.getBerthinfo()
 POST    /berthJson                controllers.Application.berthinfoTerminalJson()
+OPTIONS /berthJson                controllers.Application.checkPreFlight()
 
 GET     /container             	  controllers.Application.getContainerInfo()
 
