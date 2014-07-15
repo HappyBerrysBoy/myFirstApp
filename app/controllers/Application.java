@@ -24,7 +24,7 @@ import play.data.*;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
-
+@With(CorsAction.class)
 public class Application extends Controller {
 
 	static Form<Task> taskForm = Form.form(Task.class);
